@@ -1,6 +1,6 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Untitled](untitled.md)
+* [Button](untitled.md)
 * [Navbar](navbar.md)
 
