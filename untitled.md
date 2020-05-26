@@ -1,6 +1,6 @@
 # Button
 
-[Demo](https://vant.bctc.io/?path=/story/button--button-types)
+### [Demo](https://vant.bctc.io/?path=/story/button--button-types)
 
 #### Install
 
@@ -9,7 +9,7 @@ import React from 'react';
 import { Button } from 'vant-react';
 ```
 
-#### Usage
+## Usage
 
 **Type**
 
@@ -26,6 +26,13 @@ import { Button } from 'vant-react';
 ```text
 <Button plain type="primary">Primary</Button
 <Button plain type="danger">Danger</Button>
+```
+
+#### Hairline
+
+```text
+<Button hairline type="primary">Primary</Button
+<Button hairline type="danger">Danger</Button>
 ```
 
 **Disable**
@@ -54,7 +61,9 @@ import { Button } from 'vant-react';
 
 ```text
 <Button color="FFECB3">Pure</Button
+<Button color="linear-gradient(to right, #4bb0ff, #6149f6)">Gradient</Button>
 <Button color="00796B" plain>Pure</Button>
+<Button color="00796B" fontColor="#eee" plain>Plain</Button>
 ```
 
 **Tags**
@@ -99,7 +108,7 @@ import { Button } from 'vant-react';
 <Button tag="a" url="https://github.com/mxdi9i7/vant-react">Open URL in New Tab</Button>
 ```
 
-#### API
+## API
 
 **Props**
 
@@ -107,7 +116,8 @@ import { Button } from 'vant-react';
 | :--- | :--- | :--- | :--- | :--- |
 | `type` | Can be set to `primary` `info` `warning` `danger` | _**string**_ | `default` | _optional_ |
 | `text` | Text to be displayed in button | _**string**_ | - | _optional_ |
-| `color` | Color, in hex value: `a9s7dn` | _**string**_ | - | _optional_ |
+| `color` | Color, in hex value:`a9s7dn`, in gradient value:`linear-gradient(to right, #4bb0ff, #6149f6),in rgb: rgb(210,210,210)` | _**string**_ | - | _optional_ |
+| `fontColor` | Css Color  | _**string**_ | - | _optional_ |
 | `icon` | Button icon that appears on the left | _**string**_ | - | _optional_ |
 | `tag` | HTML Tag | _**string**_ | - | _optional_ |
 | `nativeType` | Native Type Attribute | _**string**_ | ' ' | _optional_ |
