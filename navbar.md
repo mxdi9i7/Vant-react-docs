@@ -94,10 +94,10 @@ import { Button } from 'vant-react';
 | Attribute | Description | Type | Default | Required |
 | :--- | :--- | :--- | :--- | :--- |
 | `title` | Title | _**string**_ | - | _optional_ |
-| `lefText` | Left Text | _**string**_ | - | _optional_ |
-| `righText` | Left Text | _**string**_ | - | _optional_ |
+| `leftText` | Left Text | _**string**_ | - | _optional_ |
+| `rightText` | Left Text | _**string**_ | - | _optional_ |
 | `leftIcon` | Left Icon, can be set to `arrow-left` `user-o` | _**string**_ | - | _optional_ |
-| `righIcon` | Left Icon, can be set to `search` | _**string**_ | - | _optional_ |
+| `rightIcon` | Left Icon, can be set to `search` | _**string**_ | - | _optional_ |
 | `border` | Whether to show bottom border | _**boolean**_ | `true` | _optional_ |
 | `fixed` | Whether to fixed top | _**boolean**_ | `true` | _optional_ |
 | `zIndex` | Z-index | _**number**_ | `1` | _optional_ |
