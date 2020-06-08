@@ -6,7 +6,7 @@
 
 ```text
 import React from 'react';
-import { Popup } from 'vant-react';
+import { Field } from 'vant-react';
 ```
 
 ## Usage
