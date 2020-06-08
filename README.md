@@ -45,21 +45,21 @@ const App = () => {
 * [ ] Image
 * [ ] Layout
 * [ ] Popup
-* [ ] Built-in style
+* [x] Built-in style
 
 ### Form Components
 
 * [ ] Calendar
 * [ ] Checkbox
 * [ ] DatetimePicker
-* [ ] Field
+* [x] Field
 * [ ] Form
 * [ ] NumberKeyboard
 * [ ] PasswordInput
 * [ ] Picker
 * [ ] Radio
-* [ ] Rate
-* [ ] Search
+* [x] Rate
+* [x] Search
 * [ ] Slider
 * [ ] Stepper
 * [ ] Switch
