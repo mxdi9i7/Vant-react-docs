@@ -131,6 +131,8 @@ Please make sure to read the[ Contributing Guide](https://github.com/mxdi9i7/van
 
 Or, join our discussion group on Wechat by adding me!
 
+![](.gitbook/assets/qr.png)
+
 ## Browser Support
 
 Modern browsers and Android 4.0+, iOS 8.0+.
