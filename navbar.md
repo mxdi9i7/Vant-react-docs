@@ -1,6 +1,6 @@
 # Navbar
 
-#### [Demo](https://vant.bctc.io/?path=/story/navbar--navbar-title)
+### [Demo](https://vant.bctc.io/?path=/story/navbar--navbar-title)
 
 **Install**
 
@@ -9,7 +9,7 @@ import React from 'react';
 import { Button } from 'vant-react';
 ```
 
-### Usage
+## Usage
 
 **Basic Usage**
 
@@ -87,7 +87,7 @@ import { Button } from 'vant-react';
 />
 ```
 
-### API
+## API
 
 **Props**
 
