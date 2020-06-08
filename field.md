@@ -1,6 +1,6 @@
 # Field
 
-### [Demo](http://localhost:9009/?path=/story/popup--default-popup)
+### [Demo](https://vant.bctc.io/?path=/story/field--basic-usage)
 
 #### Install
 
@@ -11,217 +11,291 @@ import { Field } from 'vant-react';
 
 ## Usage
 
-{% hint style="info" %}
-Every popup should have its own state.
-{% endhint %}
+#### Basic Usage
 
 ```text
-const [centerPopup, setCenterPopup] = useState(false);
-
-<Button click={() => {setCenterPopup(true)}}/>
-<Popup isActive={centerPopup} setActive={setCenterPopup} />
+<Field />
 ```
 
-#### Type
+#### Require Field
 
 ```text
-<Popup type='top'/>
-<Popup type='bottom'/>
-<Popup type='left'/>
-<Popup type='right'/>
+<Field label='Required' required />
 ```
 
-#### Size
+#### Custom Types
 
 ```text
-<Popup size={['200px', '200px']} />
-<Popup size={['50vw', '60vh']} />
+<Field label='Text' type='text' />
+<Field label='Phone' type='tel' />
+<Field label='Digit' type='digit' />
+<Field label='Number' type='number' />
+<Field label='Password' type='password' />
 ```
 
-#### Content
+#### Disabled
 
 ```text
-<Popup text={['It`s a popup', '#666', '30px', 'center']} />
-<Popup content={<Component />} />
+<Field disabled value='Input Disabled' />
+<Field readonly value='Input Readonly' />
 ```
 
-#### CloseIcon
+#### Colon
 
 ```text
-<Popup closeable />
-<Popup closeable closeIcon={['cross', '20px']} />
-<Popup closeable closeIconPosition={{ top: '40px', left: '40px' }} />
+<Field label='Colon' colon />
 ```
 
-#### Round Corner
+#### ShowIcon
 
 ```text
-<Popup borderRadius='50px' />
+<Field label='Left Icon' leftIcon='music-o' />
+<Field label='Right Icon' rightIcon='success' />
+<Field labelWidth='150px' label='Label Icon' labelIcon='search' />
 ```
 
-#### Custom Color
+#### Field Events
 
 ```text
-<Popup color='#b90000' />
-<Popup color='rgba(234, 123, 232,0.4)' />
+const [value, setValue] = useState('');
+const [isFocus, setFocus] = useState(false);
+
+<p>Value: {value}</p>
+
+<Field
+        leftIcon='smile-o'
+        placeholder='Show clear icon'
+        rightIcon='success'
+        value={value}
+        input={(e) => setValue(e.target.value)}
+        clear={() => setValue('')}
+        clearable
+/>
+<Field 
+        leftIcon='smile-o' 
+        placeholder='Click event' 
+        rightIcon='success' 
+/>
+<Field
+        leftIcon='smile-o'
+        placeholder='Input focus state'
+        rightIcon={isFocus ? 'success' : 'cross'}
+        focus={() => setFocus(true)}
+        blur={() => setFocus(false)}
+/>
+<Field
+        leftIcon='smile-o'
+        placeholder='Input click event'
+        clickable
+        clickInput={() => alert('Input clicked')}
+/>
+<Field
+        leftIcon='smile-o'
+        rightIcon='fire-o'
+        placeholder='Input left and right icon click'
+        clickable
+        clickLeftIcon={() => alert('Left Icon Clicked')}
+        clickRightIcon={() => alert('Right Icon Clicked')}
+/>
 ```
 
-#### Action
+#### Field Ref
 
 ```text
-<Popup text={['Click me', '#000', '30px', 'center']}
-       size={['300px', '60px']}
-       click={(e) => { alert(e) }} />
+const [containerRef, setContainerRef] = useState(null);
+const [fieldRef, setFieldRef] = useState(null);
+const [clickOutside, setClickOutside] = useState(false);
+
+window.addEventListener('click', (e) => {
+    if (
+      containerRef !== undefined &&
+      containerRef.current &&
+      !containerRef.current.contains(e.target)
+    ) {
+      setClickOutside(true);
+    } else {
+      setClickOutside(false);
+    }
+  });
+
+
+<p>
+    Container Ref element name:
+    {
+      containerRef && containerRef.current.localName
+    }
+</p>
+<p>
+    Field Ref element name:{' '}
+    {
+      fieldRef && fieldRef.current.localName
+    }
+</p>
+
+<Field
+        placeholder={`Click outside? ${clickOutside}`}
+        leftIcon='music-o'
+        rightIcon='success'
+        getContainerRef={(ref) => setContainerRef(ref)}
+        getFieldRef={(ref) => setFieldRef(ref)}
+/>
+```
+
+#### Auto Focus
+
+```text
+<Field label='Error input' error errorMessage='Invalid input info' />
+```
+
+#### Error Info
+
+```text
+<Field label='Error input' error errorMessage='Invalid input info' />
+```
+
+#### Max Length Word Limit
+
+```text
+const [value, setValue] = useState('');
+
+<Field
+        value={value}
+        input={(e) => setValue(e.target.value)}
+        label='Max length'
+        maxLength={5}
+        showWordLimit
+/>
+```
+
+#### Field With Button
+
+```text
+<Field
+        label='SMS'
+        placeholder='SMS'
+        button=
+        {
+          <Button
+            size='small'
+            click={() => alert('Message sent!')}
+            text='Send SMS'
+            type='primary'
+          />
+        }
+/>
+```
+
+#### Formatter
+
+```text
+const [value, setValue] = useState('');
+
+<Field
+        label='Text Only'
+        placeholder='No Numbers'
+        value={value}
+        input={(e) => setValue(e.target.value)}
+        formatter={(value) => pattern.test(value)}
+/>
+```
+
+#### Label Utilities
+
+```text
+<Field label='Long 220px label' labelClass='pant' labelWidth='220px' />
+```
+
+#### Label Input Alignment
+
+```text
+<Field
+      label='Label Center'
+      placeholder='Input Right'
+      labelWidth='190px'
+      labelAlign='center'
+      inputAlign='right'
+/>
+<Field
+      label='Label Right'
+      placeholder='Input Center'
+      labelWidth='190px'
+      inputAlign='center'
+      labelAlign='right'
+/>
+<Field
+      label='Error Center'
+      placeholder='Input Center'
+      labelWidth='190px'
+      inputAlign='center'
+      labelAlign='right'
+      error
+      errorMessage='Something went wrong'
+      errorAlign='center'
+/>
+<Field
+      label='Error Right'
+      placeholder='Input Center'
+      labelWidth='190px'
+      inputAlign='center'
+      labelAlign='right'
+      errorMessage='Something went wrong'
+      errorAlign='right'
+      error
+/>
+```
+
+#### Auto Resize
+
+```text
+<Field />
 ```
 
 ## API
 
 #### Props
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Attribute</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Default</th>
-      <th style="text-align:left">Required</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>type</code>
-      </td>
-      <td style="text-align:left">Can be set to <code>left</code>  <code>right</code>  <code>top</code>  <code>bottom</code>
-      </td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left"><code>center</code>
-      </td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>text</code>
-      </td>
-      <td style="text-align:left">
-        <p>Text to be displayed in popup ,<code>[text,color,size,</code>
-        </p>
-        <p><code>textAlign]</code>
-        </p>
-      </td>
-      <td style="text-align:left"><em><b>array</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>color</code>
-      </td>
-      <td style="text-align:left">Popup background-color, in hex value:<code>#b90000</code>, in gradient
-        value in rgba:<code>rgb(210,210,210,0.4)</code>
-      </td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>borderRadius</code>
-      </td>
-      <td style="text-align:left">round corner</td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>size</code>
-      </td>
-      <td style="text-align:left">popup size ,<code>[width,height]</code>
-      </td>
-      <td style="text-align:left"><em><b>array</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>content</code>
-      </td>
-      <td style="text-align:left">Component to be displayed in popup</td>
-      <td style="text-align:left">
-        <p><em><b>React</b></em>
-        </p>
-        <p><em><b>Element</b></em>
-        </p>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>closeable</code>
-      </td>
-      <td style="text-align:left">show close icon in popup</td>
-      <td style="text-align:left"><em><b>boolean</b></em>
-      </td>
-      <td style="text-align:left"><code>false</code>
-      </td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>closeIcon</code>
-      </td>
-      <td style="text-align:left">custom your close icon ,<code>[iconName, iconSize]</code>
-      </td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>closeIconPosition</code>
-      </td>
-      <td style="text-align:left"><code>Ex: { top: &apos;40px&apos;, left: &apos;40px&apos; }</code>
-      </td>
-      <td style="text-align:left"><em><b>object</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Attribute | Description | Type | Default | Required |
+| :--- | :--- | :--- | :--- | :--- |
+| `value` | Filed value | _**string**_ | - | _optional_ |
+| `type` | Can be set to `text` `tel` `digit` `number` `password`  | _**string**_ | `text` | _optional_ |
+| `label` | Field label | _**string**_ | - | _optional_ |
+| `name` | Name | _**string**_ | - | _optional_ |
+| `placeholder` | Placeholder | _**string**_ | - | _optional_ |
+| `readonly` | Whether to be readonly | _**boolean**_ | `false` | _optional_ |
+| `disabled` | Whether to display colon after label | _**boolean**_ | `false` | _optional_ |
+| `colon` | Whether to be readonly | _**boolean**_ | `false` | _optional_ |
+| `labelIcon` | Label icon that appears on the left | _**string**_ | - | _optional_ |
+| `leftIcon` | Left side icon name | _**string**_ | - | _optional_ |
+| `rightIcon` | Right side icon name | _**string**_ | - | _optional_ |
+| `clearable` | Whether to be clearable | _**boolean**_ | `false` | _optional_ |
+| `clickable` | Whether to show click feedback when clicked | _**boolean**_ | `false` | _optional_ |
+| `autofocus` | Whether to auto focus | _**boolean**_ | `false` | _optional_ |
+| `error` | Whether to show error info | _**boolean**_ | `false` | _optional_ |
+| `error-message` | Error message | _**string**_ | - | _optional_ |
+| `maxLength` | Max length of value | _**number**_ | - | _optional_ |
+| `showWordLimit` | Whether to show word limit, need to set `maxLength` prop | _**boolean**_ | `false` | _optional_ |
+| `formatter` | Input value formatter | _**Function**_ | `true` | _optional_ |
+| `labelClass` | Label className | _**string**_ | - | _optional_ |
+| `labelWidth` | Label width | _**string**_ | - | _optional_ |
+| `labelAlign` | Label align, can be set to`center` `right`  | _**TAlignment**_ | `left` | _optional_ |
+| `inputAlign` | Input align, can be set to`center` `right`  | _**TAlignment**_ | `left` | _optional_ |
+| `errorAlign` | Error message align, can be set to`center` `right`  | _**TAlignment**_ | `left` | _optional_ |
+| `required` | Whether to show required mark | _**boolean**_ | `false` | _optional_ |
+| `border` | Whether to show inner border | _**boolean**_ | `true` | _optional_ |
 
 #### Event
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Event</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Arguments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>click</code>
-      </td>
-      <td style="text-align:left">
-        <p>Triggered when click text in popup</p>
-        <p>and not disabled or loading</p>
-      </td>
-      <td style="text-align:left"><em>event: Event</em>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
+| Event | Description | Arguments |
+| :--- | :--- | :--- |
+| `input` | Triggered when input value changed | _value: String_ |
+| `clear` | Triggered when click clear icon | _event: Event_ |
+| `click` | Triggered when click Field | _event: Event_ |
+| `clickInput` | Triggered when click input | _event: Event_ |
+| `focus` | Triggered when input gets focus | _event: Event_ |
+| `blur` | Triggered when input loses focus | _event: Event_ |
+| `clickLeftIcon` | Triggered when click the left icon of Field | _event: Event_ |
+| `clickRightIcon` | Triggered when click the right icon of Field | _event: Event_ |
+| `getContainerRef` | Triggered when container ref is not undefined nor null | _event: Event_ |
+| `getFieldRef` | Triggered when Field ref is not undefined nor null | _event: Event_ |
+| `focus` | Triggered when input gets focus | _event: Event_ |
 
