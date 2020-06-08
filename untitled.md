@@ -114,19 +114,12 @@ import { Button } from 'vant-react';
 
 | Attribute | Description | Type | Default | Required |
 | :--- | :--- | :--- | :--- | :--- |
-| `value` | Filed value | _**string**_ | - | _optional_ |
-| `type` | Can be set to `text` `tel` `digit` `number` `password`  | _**string**_ | `text` | _optional_ |
-| `label` | Field label | _**string**_ | - | _optional_ |
-| `name` | Name | _**string**_ | - | _optional_ |
-| `placeholder` | Placeholder | _**string**_ | - | _optional_ |
-| `readonly` | Whether to be readonly | _**boolean**_ | `false` | _optional_ |
-| `disabled` | Whether to display colon after label | _**boolean**_ | `false` | _optional_ |
-| `colon` | Whether to be readonly | _**boolean**_ | `false` | _optional_ |
-| `labelIcon` | Label icon that appears on the left | _**string**_ | - | _optional_ |
-| `leftIcon` | Left side icon name | _**string**_ | - | _optional_ |
-| `rightIcon` | Right side icon name | _**string**_ | - | _optional_ |
-| `clearable` | Whether to be clearable | _**boolean**_ | `false` | _optional_ |
-| `clickable` | Whether to show click feedback when clicked | _**boolean**_ | `false` | _optional_ |
+| `type` | Can be set to `primary` `info` `warning` `danger` | _**string**_ | `default` | _optional_ |
+| `text` | Text to be displayed in button | _**string**_ | - | _optional_ |
+| `color` | Color, in hex value:`a9s7dn`, in gradient value:`linear-gradient(to right, #4bb0ff, #6149f6),in rgb: rgb(210,210,210)` | _**string**_ | - | _optional_ |
+| `fontColor` | Css Color  | _**string**_ | - | _optional_ |
+| `icon` | Button icon that appears on the left | _**string**_ | - | _optional_ |
+| `tag` | HTML Tag | _**string**_ | - | _optional_ |
 | `nativeType` | Native Type Attribute | _**string**_ | ' ' | _optional_ |
 | `plain` | Whether to be plain button | _**boolean**_ | `false` | _optional_ |
 | `round` | Whether to be round button | _**boolean**_ | `false` | _optional_ |
