@@ -1,113 +1,96 @@
-# Untitled
+# Rate
 
-
-
-### [Demo](https://vant.bctc.io/?path=/story/button--button-types)
+### [Demo](https://vant.bctc.io/?path=/story/rate--basic-usage)
 
 #### Install
 
 ```text
 import React from 'react';
-import { Button } from 'vant-react';
+import { Rate } from 'vant-react';
 ```
 
 ## Usage
 
-**Type**
+**Basic Usage**
 
 ```text
-<Button type="default">Default</Button>
-<Button type="primary">Primary</Button>
-<Button type="info">Info</Button>
-<Button type="danger">Danger</Button>
-<Button type="warning">Warning</Button>
+<Rate currentRate={4} />
 ```
 
-**Plain**
+**Custom Icon**
 
 ```text
-<Button plain type="primary">Primary</Button
-<Button plain type="danger">Danger</Button>
-```
-
-#### Hairline
-
-```text
-<Button hairline type="primary">Primary</Button
-<Button hairline type="danger">Danger</Button>
-```
-
-**Disable**
-
-```text
-<Button disabled type="primary">Diabled</Button>
-<Button disabled type="info">Diabled</Button>
-```
-
-**Loading**
-
-```text
-<Button loading type="primary" />
-<Button loading type="primary" loadingType="spinner" />
-<Button loading type="info" loadingText="Loading..." />
-```
-
-**Shape**
-
-```text
-<Button square type="primary">Square</Button>
-<Button round type="info">Round</Button>
+<Rate currentRate={4} icon='like' voidIcon='like-o' />
 ```
 
 **Custom Color**
 
 ```text
-<Button color="FFECB3">Pure</Button
-<Button color="linear-gradient(to right, #4bb0ff, #6149f6)">Gradient</Button>
-<Button color="00796B" plain>Pure</Button>
-<Button color="00796B" fontColor="#eee" plain>Plain</Button>
+<Rate currentRate={4} icon='like' voidIcon='like-o' color='#1989fa' />
 ```
 
-**Tags**
+#### Custom Count
 
 ```text
-<Button tag="a">A Tag</Button>
-<Button tag="button">Button Tag</Button>
+<Rate
+      count={10}
+      currentRate={4}
+      icon='like'
+      voidIcon='like-o'
+      color='#1989fa'
+/>
 ```
 
-**Native Type**
+**Disabled**
 
 ```text
-<Button nativeType="button">Button Type</Button>
-<Button nativeType="reset">Reset Type</Button>
-<Button nativeType="submit">Submit Type</Button>
+<Rate
+      disabled
+      currentRate={4}
+      icon='like'
+      voidIcon='like-o'
+      color='#1989fa'
+/>
 ```
 
-**Block**
+**Read Only**
 
 ```text
-<Button>Non Block Button</Button>
-<Button block>Block Button</Button>
+<Rate
+      readonly
+      currentRate={4}
+      icon='like'
+      voidIcon='like-o'
+      color='#1989fa'
+/>
 ```
 
-**Icon**
+**Custom Gutter**
 
 ```text
-<Button icon="https://img.yzcdn.cn/vant/logo.png">Custom Icon Button</Button>
+<Rate
+      gutter='8px'
+      currentRate={4}
+      icon='like'
+      voidIcon='like-o'
+      color='#1989fa'
+/>
 ```
 
-**Action**
+**Listen On Change**
 
 ```text
-<Button click={(e) => alert(e.target)}>Handle Click</Button>
-<Button touchstart={(e) => alert(e.target)}>Handle Touchstart</Button>
-```
+const [currentRate, setRate] = useState(4);
 
-**URL**
-
-```text
-<Button tag="a" replace url="https://github.com/mxdi9i7/vant-react">Open URL in Same Frame</Button>
-<Button tag="a" url="https://github.com/mxdi9i7/vant-react">Open URL in New Tab</Button>
+<h1>{currentRate}</h1>
+      
+<Rate
+        change={(rate) => setRate(rate)}
+        currentRate={currentRate}
+        icon='like'
+        voidIcon='like-o'
+        color='#1989fa'
+/>
 ```
 
 ## API
@@ -116,27 +99,23 @@ import { Button } from 'vant-react';
 
 | Attribute | Description | Type | Default | Required |
 | :--- | :--- | :--- | :--- | :--- |
-| `type` | Can be set to `primary` `info` `warning` `danger` | _**string**_ | `default` | _optional_ |
-| `text` | Text to be displayed in button | _**string**_ | - | _optional_ |
-| `color` | Color, in hex value:`a9s7dn`, in gradient value:`linear-gradient(to right, #4bb0ff, #6149f6),in rgb: rgb(210,210,210)` | _**string**_ | - | _optional_ |
-| `fontColor` | Css Color  | _**string**_ | - | _optional_ |
-| `icon` | Button icon that appears on the left | _**string**_ | - | _optional_ |
-| `tag` | HTML Tag | _**string**_ | - | _optional_ |
-| `nativeType` | Native Type Attribute | _**string**_ | ' ' | _optional_ |
-| `plain` | Whether to be plain button | _**boolean**_ | `false` | _optional_ |
-| `round` | Whether to be round button | _**boolean**_ | `false` | _optional_ |
-| `square` | Whether to be square button | _**boolean**_ | `false` | _optional_ |
-| `disabled` | Whether to disable button | _**boolean**_ | `false` | _optional_ |
-| `loading` | Whether to show loading status | _**boolean**_ | `false` | _optional_ |
-| `loadingText` | Loading text | _**string**_ | - | _optional_ |
-| `loadingType` | Loading type, can be set to`spinner` | _**string**_ | `circular` | _optional_ |
-| `url` | Link URL | _**string**_ | - | _optional_ |
-| `replace` | Whether open in current tab | _**boolean**_ | `false` | _optional_ |
+| `currentRate` | Current rate | _**number**_ | - | _optional_ |
+| `text` | Count | _**number**_ | - | _optional_ |
+| `size` | Icon size | _**string**_ | - | _optional_ |
+| `icon` | Selected icon | _**string**_ | - | _optional_ |
+| `gutter` | Icon gutter | _**string**_ | - | _optional_ |
+| `voidIcon` | Void icon | _**string**_ | - | _optional_ |
+| `*allowHalf` | Whether to allow half star | _**boolean**_ | `false` | _optional_ |
+| `readonly` | Whether to be readonly | _**boolean**_ | `false` | _optional_ |
+| `*touchable` | Whether to allow select rate by touch gesture | _**boolean**_ | `true` | _optional_ |
+| `disabled` | Whether to disable rate | _**boolean**_ | `false` | _optional_ |
+| `color` | Selected color | _**string**_ | - | _optional_ |
+| `voidColor` | Void color | _**string**_ | - | _optional_ |
+| `disabledColor` | Disabled color | _**string**_ | - | _optional_ |
 
 **Event**
 
-| Event | Description | Arguments |
+| Event | Description | Parameters |
 | :--- | :--- | :--- |
-| `click` | Triggered when click button and not disabled or loading | _event: Event_ |
-| `touchstart` | Triggered when touch start on mobile | _event:TouchEvent_ |
+| `change` | Triggered when rate changed | _current rate_ |
 

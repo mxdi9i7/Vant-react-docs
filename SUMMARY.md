@@ -5,5 +5,5 @@
 * [Navbar](navbar.md)
 * [Popup](popup.md)
 * [Field](field.md)
-* [Untitled](untitled-1.md)
+* [Rate](untitled-1.md)
 
