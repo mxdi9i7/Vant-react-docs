@@ -41,7 +41,12 @@ const [centerPopup, setCenterPopup] = useState(false);
 #### Content
 
 ```text
-<Popup text={['It`s a popup', '#666', '30px', 'center']} />
+<Popup text={{
+          text: 'It`s a popup',
+          color: '#666',
+          fontSize: '30px',
+          textAlign: 'center'
+        }} />
 <Popup content={<Component />} />
 ```
 
@@ -49,7 +54,7 @@ const [centerPopup, setCenterPopup] = useState(false);
 
 ```text
 <Popup closeable />
-<Popup closeable closeIcon={['cross', '20px']} />
+<Popup closeable closeIcon={{ name: 'close', size: '20px' }} />
 <Popup closeable closeIconPosition={{ top: '40px', left: '40px' }} />
 ```
 
@@ -69,7 +74,12 @@ const [centerPopup, setCenterPopup] = useState(false);
 #### Action
 
 ```text
-<Popup text={['Click me', '#000', '30px', 'center']}
+<Popup text={{
+          text: 'Click me',
+          color: '#000',
+          fontSize: '30px',
+          textAlign: 'center'
+        }}
        size={['300px', '60px']}
        click={(e) => { alert(e) }} />
 ```
@@ -105,12 +115,12 @@ const [centerPopup, setCenterPopup] = useState(false);
       <td style="text-align:left"><code>text</code>
       </td>
       <td style="text-align:left">
-        <p>Text to be displayed in popup ,<code>[text,color,size,</code>
+        <p>Text to be displayed in popup ,<code>{text,color,size,</code>
         </p>
-        <p><code>textAlign]</code>
+        <p><code>textAlign}</code>
         </p>
       </td>
-      <td style="text-align:left"><em><b>array</b></em>
+      <td style="text-align:left"><em><b>object</b></em>
       </td>
       <td style="text-align:left">-</td>
       <td style="text-align:left"><em>optional</em>
@@ -177,9 +187,9 @@ const [centerPopup, setCenterPopup] = useState(false);
     <tr>
       <td style="text-align:left"><code>closeIcon</code>
       </td>
-      <td style="text-align:left">custom your close icon ,<code>[iconName, iconSize]</code>
+      <td style="text-align:left">custom your close icon ,<code>{iconName, iconSize}</code>
       </td>
-      <td style="text-align:left"><em><b>string</b></em>
+      <td style="text-align:left"><em><b>object</b></em>
       </td>
       <td style="text-align:left">-</td>
       <td style="text-align:left"><em>optional</em>
