@@ -160,6 +160,19 @@ const [centerPopup, setCenterPopup] = useState(false);
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>padding</code>
+      </td>
+      <td style="text-align:left">
+        <p>content padding ,</p>
+        <p><code>10px</code>  <code>0 20px</code> 
+        </p>
+      </td>
+      <td style="text-align:left"><em><b>string</b></em>
+      </td>
+      <td style="text-align:left">-</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>content</code>
       </td>
       <td style="text-align:left">Component to be displayed in popup</td>
