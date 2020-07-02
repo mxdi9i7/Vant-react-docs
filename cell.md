@@ -1,6 +1,6 @@
-# Popup
+# index
 
-### [Demo](https://vant.bctc.io/?path=/story/popup--default-popup)
+### [Demo](https://vant.bctc.io/?path=/story/cell--basic-usage)
 
 #### Install
 
@@ -164,7 +164,7 @@ const [centerPopup, setCenterPopup] = useState(false);
       </td>
       <td style="text-align:left">
         <p>content padding ,</p>
-        <p><code>10px</code>  <code>0 20px</code> 
+        <p><code>10px</code>  <code>0 20px</code>
         </p>
       </td>
       <td style="text-align:left"><em><b>string</b></em>
@@ -245,6 +245,4 @@ const [centerPopup, setCenterPopup] = useState(false);
     </tr>
   </tbody>
 </table>
-
-
 
