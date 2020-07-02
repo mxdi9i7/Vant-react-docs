@@ -1,4 +1,4 @@
-# index
+# Cell
 
 ### [Demo](https://vant.bctc.io/?path=/story/cell--basic-usage)
 
@@ -6,82 +6,76 @@
 
 ```text
 import React from 'react';
-import { Popup } from 'vant-react';
+import { Cell } from 'vant-react';
 ```
 
 ## Usage
 
-{% hint style="info" %}
-Every popup should have its own state.
-{% endhint %}
+#### Basic Usage
 
 ```text
-const [centerPopup, setCenterPopup] = useState(false);
-
-<Button click={() => {setCenterPopup(true)}}/>
-<Popup isActive={centerPopup} setActive={setCenterPopup} />
+<Cell
+      title={{ text: 'Title', fontSize: '14px' }}
+      content={{ text: 'Content', fontSize: '12px' }}
+    />
+<Cell
+      title={{ text: 'Title', fontSize: '14px' }}
+      content={{ text: 'Content', fontSize: '12px' }}
+      description={{ text: 'description', fontSize: '12px' }}
+    />
 ```
 
-#### Type
+#### Cell Icon
 
 ```text
-<Popup type='top'/>
-<Popup type='bottom'/>
-<Popup type='left'/>
-<Popup type='right'/>
+<Cell titleIcon={{ name: 'location-o', size: '12px' }}
+      title={{ text: 'Title', fontSize: '14px' }}
+      contentIcon={{ name: 'arrow', size: '12px' }}
+      content={{ text: 'Content', fontSize: '12px' }} 
+    />
 ```
 
-#### Size
+#### Cell Tag
 
 ```text
-<Popup size={['200px', '200px']} />
-<Popup size={['50vw', '60vh']} />
+<Cell
+      title={{ text: 'Title', fontSize: '14px' }}
+      Tag={<Tag type='danger' text='Tag' />}
+      content={{ text: 'Content', fontSize: '12px' }}
+    />
 ```
 
-#### Content
+#### Round Cell
 
 ```text
-<Popup text={{
-          text: 'It`s a popup',
-          color: '#666',
-          fontSize: '30px',
-          textAlign: 'center'
-        }} />
-<Popup content={<Component />} />
+<Cell title={{ text: 'Title', fontSize: '14px' }} round />
 ```
 
-#### CloseIcon
+#### Value Only
 
 ```text
-<Popup closeable />
-<Popup closeable closeIcon={{ name: 'close', size: '20px' }} />
-<Popup closeable closeIconPosition={{ top: '40px', left: '40px' }} />
+<Cell title={{ text: 'Title', fontSize: '14px' }} round />
 ```
 
-#### Round Corner
+#### URL
 
 ```text
-<Popup borderRadius='50px' />
-```
-
-#### Custom Color
-
-```text
-<Popup color='#b90000' />
-<Popup color='rgba(234, 123, 232,0.4)' />
+<Cell
+      title={{ text: 'URL', fontSize: '14px' }}
+      url='www.google.com'
+      replace
+    />
 ```
 
 #### Action
 
 ```text
-<Popup text={{
-          text: 'Click me',
-          color: '#000',
-          fontSize: '30px',
-          textAlign: 'center'
-        }}
-       size={['300px', '60px']}
-       click={(e) => { alert(e) }} />
+<Cell
+      title={{ text: 'Click', fontSize: '14px' }}
+      click={(e) => {
+        alert(e);
+      }}
+    />
 ```
 
 ## API
@@ -100,26 +94,9 @@ const [centerPopup, setCenterPopup] = useState(false);
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><code>type</code>
+      <td style="text-align:left"><code>title</code>
       </td>
-      <td style="text-align:left">Can be set to <code>left</code>  <code>right</code>  <code>top</code>  <code>bottom</code>
-      </td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left"><code>center</code>
-      </td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>text</code>
-      </td>
-      <td style="text-align:left">
-        <p>Text to be displayed in popup ,<code>{text,color,size,</code>
-        </p>
-        <p><code>textAlign}</code>
-        </p>
-      </td>
+      <td style="text-align:left">Cell title</td>
       <td style="text-align:left"><em><b>object</b></em>
       </td>
       <td style="text-align:left">-</td>
@@ -127,55 +104,50 @@ const [centerPopup, setCenterPopup] = useState(false);
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>color</code>
+      <td style="text-align:left"><code>titleIcon</code>
       </td>
-      <td style="text-align:left">Popup background-color, in hex value:<code>#b90000</code>, in gradient
-        value in rgba:<code>rgb(210,210,210,0.4)</code>
+      <td style="text-align:left">Left side icon name</td>
+      <td style="text-align:left"><em><b>object</b></em>
       </td>
-      <td style="text-align:left"><em><b>string</b></em>
+      <td style="text-align:left"><em><b>-</b></em>
       </td>
-      <td style="text-align:left">-</td>
       <td style="text-align:left"><em>optional</em>
       </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>borderRadius</code>
-      </td>
-      <td style="text-align:left">round corner</td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>size</code>
-      </td>
-      <td style="text-align:left">popup size ,<code>[width,height]</code>
-      </td>
-      <td style="text-align:left"><em><b>array</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>padding</code>
-      </td>
-      <td style="text-align:left">
-        <p>content padding ,</p>
-        <p><code>10px</code>  <code>0 20px</code>
-        </p>
-      </td>
-      <td style="text-align:left"><em><b>string</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left"><code>content</code>
       </td>
-      <td style="text-align:left">Component to be displayed in popup</td>
+      <td style="text-align:left">Cell content</td>
+      <td style="text-align:left"><em><b>object</b></em>
+      </td>
+      <td style="text-align:left">-</td>
+      <td style="text-align:left"><em>optional</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>contentIcon</code>
+      </td>
+      <td style="text-align:left">Right side icon name</td>
+      <td style="text-align:left"><em><b>object</b></em>
+      </td>
+      <td style="text-align:left">-</td>
+      <td style="text-align:left"><em>optional</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>description</code>
+      </td>
+      <td style="text-align:left">Cell description</td>
+      <td style="text-align:left"><em><b>object</b></em>
+      </td>
+      <td style="text-align:left">-</td>
+      <td style="text-align:left"><em>optional</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>Tag</code>
+      </td>
+      <td style="text-align:left">Cell tag</td>
       <td style="text-align:left">
         <p><em><b>React</b></em>
         </p>
@@ -187,33 +159,30 @@ const [centerPopup, setCenterPopup] = useState(false);
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>closeable</code>
+      <td style="text-align:left"><code>url</code>
       </td>
-      <td style="text-align:left">show close icon in popup</td>
-      <td style="text-align:left"><em><b>boolean</b></em>
-      </td>
-      <td style="text-align:left"><code>false</code>
-      </td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>closeIcon</code>
-      </td>
-      <td style="text-align:left">custom your close icon ,<code>{iconName, iconSize}</code>
-      </td>
-      <td style="text-align:left"><em><b>object</b></em>
+      <td style="text-align:left">Link URL</td>
+      <td style="text-align:left"><em><b>string</b></em>
       </td>
       <td style="text-align:left">-</td>
       <td style="text-align:left"><em>optional</em>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>closeIconPosition</code>
+      <td style="text-align:left"><code>replace</code>
       </td>
-      <td style="text-align:left"><code>Ex: { top: &apos;40px&apos;, left: &apos;40px&apos; }</code>
+      <td style="text-align:left">Whether open in current tab</td>
+      <td style="text-align:left"><em><b>boolean</b></em>
       </td>
-      <td style="text-align:left"><em><b>object</b></em>
+      <td style="text-align:left">-</td>
+      <td style="text-align:left"><em>optional</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>round</code>
+      </td>
+      <td style="text-align:left">Whether to be round button</td>
+      <td style="text-align:left"><em><b>boolean</b></em>
       </td>
       <td style="text-align:left">-</td>
       <td style="text-align:left"><em>optional</em>
@@ -224,25 +193,7 @@ const [centerPopup, setCenterPopup] = useState(false);
 
 #### Event
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Event</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Arguments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>click</code>
-      </td>
-      <td style="text-align:left">
-        <p>Triggered when click text in popup</p>
-        <p>and not disabled or loading</p>
-      </td>
-      <td style="text-align:left"><em>event: Event</em>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Event | Description | Arguments |
+| :--- | :--- | :--- |
+| `click` | Triggered when click cell and not disabled or loading | _event: Event_ |
 

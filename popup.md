@@ -1,6 +1,6 @@
 # Popup
 
-### [Demo](https://vant.bctc.io/?path=/story/popup--default-popup)
+### [Demo](http://localhost:9009/?path=/story/popup--default-popup)
 
 #### Install
 
