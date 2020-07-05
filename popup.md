@@ -1,6 +1,6 @@
 # Popup
 
-### [Demo](http://localhost:9009/?path=/story/popup--default-popup)
+### [Demo](https://vant.bctc.io/?path=/story/popup--default-popup)
 
 #### Install
 
@@ -170,7 +170,8 @@ const [centerPopup, setCenterPopup] = useState(false);
       <td style="text-align:left"><em><b>string</b></em>
       </td>
       <td style="text-align:left">-</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left"><em>optional</em>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>content</code>
