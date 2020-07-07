@@ -210,27 +210,3 @@ const [value, setValue] = useState(0)
   </tbody>
 </table>
 
-#### Event
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Event</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Arguments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>click</code>
-      </td>
-      <td style="text-align:left">
-        <p>Triggered when click text in popup</p>
-        <p>and not disabled or loading</p>
-      </td>
-      <td style="text-align:left"><em>event: Event</em>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
