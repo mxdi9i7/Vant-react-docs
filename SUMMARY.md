@@ -7,4 +7,5 @@
 * [Field](field.md)
 * [Rate](untitled-1.md)
 * [Cell](cell.md)
+* [Slider](slider.md)
 
