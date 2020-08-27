@@ -34,8 +34,8 @@ const [centerPopup, setCenterPopup] = useState(false);
 #### Size
 
 ```text
-<Popup size={['200px', '200px']} />
-<Popup size={['50vw', '60vh']} />
+<Popup size={{width:'200px', height:'200px'}} />
+<Popup size={{width:'50vwx', height:'60vh'}} />
 ```
 
 #### Content
@@ -80,7 +80,7 @@ const [centerPopup, setCenterPopup] = useState(false);
           fontSize: '30px',
           textAlign: 'center'
         }}
-       size={['300px', '60px']}
+       size={{width:'300px', height:'60vh'}}
        click={(e) => { alert(e) }} />
 ```
 
@@ -151,13 +151,13 @@ const [centerPopup, setCenterPopup] = useState(false);
     <tr>
       <td style="text-align:left"><code>size</code>
       </td>
-      <td style="text-align:left">popup size ,<code>[width,height]</code>
-      </td>
-      <td style="text-align:left"><em><b>array</b></em>
-      </td>
-      <td style="text-align:left">-</td>
-      <td style="text-align:left"><em>optional</em>
-      </td>
+      <td style="text-align:left">popup size , { width: &apos;10px&apos;, height: &apos;100vh&apos; }</td>
+      <td
+      style="text-align:left"><em><b>object</b></em>
+        </td>
+        <td style="text-align:left">-</td>
+        <td style="text-align:left"><em>optional</em>
+        </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>padding</code>
